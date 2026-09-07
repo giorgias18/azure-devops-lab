@@ -11,3 +11,18 @@ Il comando utilizzato per controllare la presenza e il funzionamento di Azure CL
 Lo stato dell'invito al docente come collaboratore del repository è stato verificato in **Settings → Collaborators**, dove risulta attualmente come collaboratore attivo (invito accettato).
 
 Un possibile errore di contesto frequente consisterebbe nel lavorare, senza accorgersene, in una cartella del filesystem Windows montato in WSL (percorsi che iniziano con `/mnt/c/...`) invece che nella home Linux. Questo errore si riconosce eseguendo `pwd`: se il percorso restituito inizia con `/mnt/c`, si sta operando fuori dal filesystem Linux, con possibili rallentamenti e comportamenti anomali di Git; il rimedio è spostarsi con `cd ~/workspace/...` verso la cartella di lavoro corretta.
+
+
+## Autovalutazione
+
+| Capacità | Valutazione |
+|---|---|
+| Distinguo PowerShell dal terminale Ubuntu | `Completato` |
+| Verifico che Ubuntu utilizzi WSL 2 | `Completato` |
+| Riconosco la radice del repository Git | `Completato`|
+| Verifico il remote prima del push | `Completato` |
+| Distinguo file non tracciato e file in staging | `Completato` |
+| Inserisco in staging soltanto il file richiesto | `Completato` |
+| Verifico lo stesso commit in locale e su GitHub | `Completato` |
+| Verifico lo stato dell'invito al docente | `Completato` |
+| Riconosco ed escludo dati riservati | `Completato` |
