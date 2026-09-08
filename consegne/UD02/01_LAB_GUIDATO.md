@@ -30,12 +30,13 @@ Esempio di ID confrontato (anonimizzato):
 
 ## Cleanup
 
-- operazione di eliminazione:
-- controllo utilizzato:
-- risultato finale:
-- eventuale anomalia e soluzione:
+- operazione di eliminazione: eseguito `az group delete --name "$LAB_RG" --yes --no-wait` sul resource group `rg-cea-ud02-5a3d394d`;
+- controllo utilizzato: eseguiti `az group wait --name "$LAB_RG" --deleted` e successivamente `az group exists --name "$LAB_RG"`;
+- risultato finale: `az group exists` ha restituito `false`, confermando che il resource group e le risorse del laboratorio sono stati eliminati;
+- eventuale anomalia e soluzione: nessuna anomalia; la cancellazione è terminata correttamente.
+
 
 ## Rilevanza professionale
 
-Spiega come inventario, tag e verifica del cleanup rendono una procedura ripetibile e controllabile.
+In un contesto professionale, mantenere un inventario delle risorse permette di sapere cosa è stato creato, a quale ambiente appartiene e quale ciclo di vita deve seguire. I tag rendono queste informazioni interrogabili e aiutano a classificare le risorse, attribuire i costi e identificare quelle che devono essere eliminate. La verifica finale del cleanup, tramite `az group wait` e `az group exists`, permette invece di accertare che l'operazione sia realmente terminata e che il resource group non esista più. Insieme, inventario, tagging e verifica finale trasformano una semplice sequenza di comandi in una procedura ripetibile, tracciabile e controllabile, applicabile anche a contesti professionali e a processi di automazione o pipeline.
 
