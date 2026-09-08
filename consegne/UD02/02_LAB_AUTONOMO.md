@@ -52,4 +52,4 @@ Non si sono verificate anomalie durante l'esecuzione: la sottoscrizione è risul
 
 - risorse eliminate: resource group `rg-cea-ud02-auto-421fe3b8` (con VNet e storage account al suo interno), eliminato come unità;
 - controllo finale: `az group delete --name "$AUTO_RG" --yes --no-wait`, seguito da `az group wait --name "$AUTO_RG" --deleted` (completato in circa 1 minuto) e `az group exists --name "$AUTO_RG"` → `false`;
-- hash abbreviato e messaggio del commit: da compilare dopo il commit.
+- hash abbreviato e messaggio del commit: `58f42c2` "Completa lo scenario Azure autonomo".
