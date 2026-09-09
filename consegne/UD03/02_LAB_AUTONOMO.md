@@ -34,16 +34,18 @@ Per il team FinOps ho scelto **Reader** come ruolo, sul **resource group** come 
 
 ## Budget, lock e cleanup
 
-- **Budget** (`budget-cea-fd36b9`, mensile, 10€, soglia 80%): funzione di monitoraggio e alert al superamento soglia; limite: non blocca la spesa né impedisce la creazione di risorse, è solo notifica;
+- **Budget** (`budget-cea-fd36b9`, mensile, 10€, soglia 80%): funzione di monitoraggio e alert al superamento soglia; limite: non blocca la spesa né impedisce la creazione git add consegne/UD03/02_LAB_AUTONOMO.mddi risorse, è solo notifica;
 - **Lock** (`lock-cea-delete`, CanNotDelete): protegge da eliminazioni accidentali dello scope; limite: blocca solo operazioni di delete, non impedisce lettura né altre modifiche, e può ostacolare cleanup/automazioni se non rimosso in tempo;
 - **RBAC Reader**: limita l'accesso in scrittura del principal sullo scope, ma non ha effetto su budget o lock — sono controlli indipendenti e cumulativi;
 
-Ordine di rimozione da seguire nel cleanup finale (non ancora eseguito):
-1. Rimuovere il budget dal portale
-2. Rimuovere la sola role assignment Reader creata dal laboratorio (non ruoli ereditati)
-3. Rimuovere il lock via CLI (`az lock delete`)
-4. Rimuovere l'utente dal gruppo, poi eliminare gruppo e utente dal portale
-5. Eliminare il resource group e verificare con `az group exists` che risulti `false`
+Ordine seguito nel cleanup finale:
+1. Rimosso il budget dal portale (dopo aver prima rimosso il lock, che bloccava anche la delete del budget — vedi nota sotto)
+2. Rimossa la role assignment Reader dal gruppo, verificata con `az role assignment list --output table` (restava solo Owner ereditato)
+3. Rimosso il lock via CLI con `az lock delete`, verificato con `az lock list` → tabella vuota
+4. Rimosso l'utente dal gruppo, poi eliminati gruppo e utente dal portale
+5. Eliminato il resource group con `az group delete`, atteso con `az group wait --deleted`, confermato con `az group exists` → `false`
+
+Nota: durante l'esecuzione è emerso che il lock blocca la delete di *qualsiasi* risorsa al suo interno, non solo del resource group, infatti il tentativo di eliminare il budget mentre il lock era ancora attivo ha dato lo stesso errore `ScopeLocked` visto nel Caso C. Per questo il lock è stato rimosso per primo, prima del budget.
 
 ## Risultato finale
 
