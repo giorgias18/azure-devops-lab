@@ -48,5 +48,6 @@ Ordine di rimozione da seguire nel cleanup finale (non ancora eseguito):
 ## Risultato finale
 
 - output anonimizzati utilizzati: `az role assignment list --scope "$RG_SCOPE" --include-inherited --output jsonc` con subscription ID mascherato via `sed`;
-- cleanup verificato: **non ancora eseguito, rimandato a dopo la verifica del laboratorio**
-- hash abbreviato e messaggio del commit: **da compilare**
+- cleanup verificato: **eseguito**, rimossi budget, lock, role assignment Reader, utente e gruppo; resource group `rg-cea-identity-fd36b9` eliminato e confermato con `az group exists` → `false`
+- hash abbreviato e messaggio del commit: 14ee48c "non avevo salvato il file del laboratorio autonomo..." 
+
