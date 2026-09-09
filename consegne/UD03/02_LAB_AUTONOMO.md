@@ -51,5 +51,5 @@ Nota: durante l'esecuzione è emerso che il lock blocca la delete di *qualsiasi*
 
 - output anonimizzati utilizzati: `az role assignment list --scope "$RG_SCOPE" --include-inherited --output jsonc` con subscription ID mascherato via `sed`;
 - cleanup verificato: **eseguito**, rimossi budget, lock, role assignment Reader, utente e gruppo; resource group `rg-cea-identity-fd36b9` eliminato e confermato con `az group exists` → `false`
-- hash abbreviato e messaggio del commit: 14ee48c "non avevo salvato il file del laboratorio autonomo..." 
+- hash abbreviato e messaggio del commit: 7215a65 "completamento ultima parte lab autonomo" 
 
