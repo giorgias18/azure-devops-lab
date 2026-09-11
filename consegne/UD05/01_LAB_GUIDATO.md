@@ -25,7 +25,7 @@
 
 ## Costi e cleanup
 
-Risorse create: VNet vnet-ud05 con subnet snet-web e snet-data, NSG nsg-data-ud05 con relativa regola, NIC nic-data-01 e nic-web-01. Nessuna VM né IP pubblico creati, quindi il costo attuale è marginale (le NIC senza VM associata e le NSG non generano costi diretti significativi). || Il cleanup (eliminazione di NIC, NSG e VNet) è rimandato a dopo il completamento del lab autonomo e della verifica, per evitare di dover ricreare le risorse.
+Risorse create: VNet vnet-ud05 con subnet snet-web e snet-data, NSG nsg-data-ud05 con relativa regola, NIC nic-data-01 e nic-web-01. Nessuna VM né IP pubblico creati, quindi il costo è stato marginale (le NIC senza VM associata e le NSG non generano costi diretti significativi). || Il cleanup (rimozione dell'associazione NSG-subnet, eliminazione di NIC, NSG e VNet con relative subnet) è stato eseguito al termine del lab autonomo; verificato con liste vuote su vnet/nsg/nic nel resource group. Il resource group rg-cea-storage-46663063 e lo storage account stcea46663063 (UD04) restano intatti, il loro cleanup è rimandato alla sezione finale.
 
 ## Rilevanza professionale
 
